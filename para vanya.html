@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una pregunta para Vanya 💙</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0077ff, #00bfff);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .contenedor {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            width: 350px;
+        }
+
+        h1 {
+            color: #087cfb;
+            font-size: 30px;
+        }
+
+        h2 {
+            color: #333;
+            line-height: 1.4;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #si {
+            background: #087cfb;
+            color: white;
+        }
+
+        #no {
+            background: #ddd;
+            color: #333;
+            position: absolute;
+        }
+
+        #mensaje {
+            display: none;
+            font-size: 24px;
+            color: #087cfb;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenedor">
+        <h1>💙🎬🍿</h1>
+
+        <h2>Vanya, ¿te gustaría ver una película en mi casita algún día??</h2>
+
+        <button id="si" onclick="aceptar()">Sí 💙</button>
+        <button id="no">No 😢</button>
+
+        <div id="mensaje">
+            ¡Sabía que dirías que sí! 🥰💙🍿🎬
+        </div>
+    </div>
+
+    <script>
+        const botonNo = document.getElementById("no");
+
+        function moverBoton() {
+            const ancho = window.innerWidth - botonNo.offsetWidth;
+            const alto = window.innerHeight - botonNo.offsetHeight;
+
+            const x = Math.max(0, Math.random() * ancho);
+            const y = Math.max(0, Math.random() * alto);
+
+            botonNo.style.left = x + "px";
+            botonNo.style.top = y + "px";
+        }
+
+        botonNo.addEventListener("mouseenter", moverBoton);
+
+        botonNo.addEventListener("touchstart", function(event) {
+            event.preventDefault();
+            moverBoton();
+        });
+
+        botonNo.addEventListener("click", moverBoton);
+
+        function aceptar() {
+            document.getElementById("mensaje").style.display = "block";
+            document.getElementById("si").style.display = "none";
+            botonNo.style.display = "none";
+        }
+    </script>
+</body>
+</html>
